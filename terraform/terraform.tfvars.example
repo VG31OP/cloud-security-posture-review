@@ -1,0 +1,9 @@
+aws_region          = "ap-south-1"
+environment         = "production"
+vpc_cidr            = "10.50.0.0/16"
+availability_zones  = ["ap-south-1a", "ap-south-1b"]
+admin_ingress_cidrs = ["203.0.113.50/32"] # Replace with authorized enterprise VPN / IP CIDR
+bucket_name_prefix  = "pune-esg-data"
+db_name             = "esg_analytics_db"
+db_username         = "esg_admin_sec"
+alert_email_address = "security-incident-response@puneesg.local"

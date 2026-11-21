@@ -1,0 +1,77 @@
+{
+  "assessment_metadata": {
+    "target_organization": "GreenMetric ESG Analytics Ltd. (Pune, MH)",
+    "scan_tool": "Prowler v3.14.0 & ScoutSuite v5.12.0",
+    "framework": "CIS AWS Foundations Benchmark v3.0",
+    "scan_timestamp": "2026-11-16T10:15:30Z",
+    "posture_state": "Vulnerable Baseline (Pre-Remediation)"
+  },
+  "summary_metrics": {
+    "total_controls_evaluated": 110,
+    "passed_controls": 42,
+    "failed_controls": 68,
+    "critical_severity_failures": 7,
+    "high_severity_failures": 18,
+    "medium_severity_failures": 29,
+    "low_severity_failures": 14,
+    "overall_compliance_score_percent": 38.18
+  },
+  "top_critical_findings": [
+    {
+      "control_id": "CIS-1.16",
+      "severity": "CRITICAL",
+      "title": "MFA Not Enforced for Administrative and Console Users",
+      "service": "IAM",
+      "status": "FAIL",
+      "finding_detail": "Root user and 4 IAM administrator accounts have no active MFA hardware or virtual token enabled."
+    },
+    {
+      "control_id": "CIS-2.1.5",
+      "severity": "CRITICAL",
+      "title": "S3 Public Access Block Disabled on Storage Buckets",
+      "service": "S3",
+      "status": "FAIL",
+      "finding_detail": "Buckets 'pune-esg-disclosure-drafts' and 'pune-esg-smartmeter-telemetry' have block_public_acls and block_public_policy set to false with world-readable ACL grants."
+    },
+    {
+      "control_id": "CIS-4.1",
+      "severity": "CRITICAL",
+      "title": "Security Groups Allow Ingress From 0.0.0.0/0 to SSH (Port 22)",
+      "service": "EC2 / VPC",
+      "status": "FAIL",
+      "finding_detail": "Default security group and instance security group 'esg-web-sg' allow unrestricted inbound TCP traffic on port 22 from any IPv4 address."
+    },
+    {
+      "control_id": "CIS-2.3.1",
+      "severity": "CRITICAL",
+      "title": "RDS Database Instance Is Publicly Accessible and Unencrypted",
+      "service": "RDS",
+      "status": "FAIL",
+      "finding_detail": "PostgreSQL instance 'esg-analytics-db' has publicly_accessible=true and storage_encrypted=false."
+    },
+    {
+      "control_id": "CIS-3.1",
+      "severity": "CRITICAL",
+      "title": "Multi-Region CloudTrail Trail Not Configured",
+      "service": "CloudTrail",
+      "status": "FAIL",
+      "finding_detail": "No active multi-region trail exists to record management events; log file validation is disabled."
+    },
+    {
+      "control_id": "CIS-2.8",
+      "severity": "HIGH",
+      "title": "AWS GuardDuty Threat Detection Disabled",
+      "service": "GuardDuty",
+      "status": "FAIL",
+      "finding_detail": "GuardDuty detector is not enabled in ap-south-1 primary operating region."
+    },
+    {
+      "control_id": "CIS-3.3",
+      "severity": "HIGH",
+      "title": "Absence of CloudWatch Alarms for Root Account Usage",
+      "service": "CloudWatch",
+      "status": "FAIL",
+      "finding_detail": "No metric filter or SNS notification configured to alert on root credentials usage."
+    }
+  ]
+}

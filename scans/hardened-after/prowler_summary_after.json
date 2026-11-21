@@ -1,0 +1,71 @@
+{
+  "assessment_metadata": {
+    "target_organization": "GreenMetric ESG Analytics Ltd. (Pune, MH)",
+    "scan_tool": "Prowler v3.14.0 & ScoutSuite v5.12.0",
+    "framework": "CIS AWS Foundations Benchmark v3.0",
+    "scan_timestamp": "2026-11-20T14:45:10Z",
+    "posture_state": "Hardened Infrastructure as Code (Post-Remediation)"
+  },
+  "summary_metrics": {
+    "total_controls_evaluated": 110,
+    "passed_controls": 104,
+    "failed_controls": 6,
+    "critical_severity_failures": 0,
+    "high_severity_failures": 0,
+    "medium_severity_failures": 4,
+    "low_severity_failures": 2,
+    "overall_compliance_score_percent": 94.55,
+    "percentage_score_improvement": 56.37
+  },
+  "remediation_verification": [
+    {
+      "control_id": "CIS-1.16",
+      "severity": "CRITICAL",
+      "title": "MFA Enforcement Policy",
+      "status": "PASS",
+      "verification": "Explicit Deny policy attached for non-MFA sessions across all IAM groups."
+    },
+    {
+      "control_id": "CIS-2.1.5",
+      "severity": "CRITICAL",
+      "title": "S3 Public Access Block",
+      "status": "PASS",
+      "verification": "All 4 public block flags set to true; bucket policies enforce SSL/TLS 1.2+ only."
+    },
+    {
+      "control_id": "CIS-4.1",
+      "severity": "CRITICAL",
+      "title": "Security Group Ingress Hardening",
+      "status": "PASS",
+      "verification": "Port 22 completely removed from 0.0.0.0/0. AWS Systems Manager (SSM) Session Manager enabled."
+    },
+    {
+      "control_id": "CIS-2.3.1",
+      "severity": "CRITICAL",
+      "title": "RDS Private Isolation & KMS Encryption",
+      "status": "PASS",
+      "verification": "publicly_accessible set to false; storage encrypted with KMS CMK; automated 7-day backups enabled."
+    },
+    {
+      "control_id": "CIS-3.1",
+      "severity": "CRITICAL",
+      "title": "Multi-Region CloudTrail Trail",
+      "status": "PASS",
+      "verification": "Multi-region trail active with log file validation, KMS encryption, and CloudWatch Logs delivery."
+    },
+    {
+      "control_id": "CIS-2.8",
+      "severity": "HIGH",
+      "title": "AWS GuardDuty Threat Detection",
+      "status": "PASS",
+      "verification": "GuardDuty detector enabled with S3 and EBS malware protection data sources active."
+    },
+    {
+      "control_id": "CIS-3.3 - 3.10",
+      "severity": "HIGH",
+      "title": "CloudWatch Metric Alarms & SNS",
+      "status": "PASS",
+      "verification": "Alarms active for Root Account Usage, IAM Policy Changes, Unauthorized API calls, and SG modifications."
+    }
+  ]
+}
